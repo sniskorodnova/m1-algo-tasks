@@ -8,7 +8,18 @@ public class Algorithms {
      * Отсортируйте список, НЕ используя методы стандартной библиотеки (напр. Collections.sort).
      */
     public static List<Integer> sort(List<Integer> list) {
-        return null;
+        List<Integer> sortedList = new ArrayList<>(list);
+        int temp;
+        for (int i = 1; i < sortedList.size(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (sortedList.get(i) < sortedList.get(j)) {
+                    temp = sortedList.get(j);
+                    sortedList.set(j, sortedList.get(i));
+                    sortedList.set(i, temp);
+                }
+            }
+        }
+        return sortedList;
     }
 
     /**
@@ -20,7 +31,27 @@ public class Algorithms {
      * К списку-результату это не относится.
      */
     public static List<Integer> removeDuplicates(List<Integer> list) {
-        return null;
+        List<Integer> newList = new ArrayList<>();
+        boolean isDuplicate = false;
+        if (list.isEmpty()) {
+            return list;
+        } else {
+            newList.add(list.get(0));
+            for (int i = 1; i < list.size(); i++) {
+                for (int j = 0; j < newList.size(); j++) {
+                    if (newList.get(j) == list.get(i)) {
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+                if (!isDuplicate) {
+                    newList.add(list.get(i));
+                }
+                isDuplicate = false;
+            }
+
+            return newList;
+        }
     }
 
     /**
@@ -33,7 +64,18 @@ public class Algorithms {
      * Доп. условие: у алгоритма должна быть линейная сложность, O(n)
      */
     public static boolean isPalindrome(List<Integer> list) {
-        return false;
+        boolean isPalindrom = true;
+        if (list.isEmpty()) {
+            return isPalindrom;
+        } else {
+            for (int i = 0; i < list.size() / 2 + 1; i++) {
+                if (list.get(i) != list.get(list.size() - (i + 1))) {
+                    isPalindrom = false;
+                    break;
+                }
+            }
+        }
+        return isPalindrom;
     }
 
     /**
@@ -47,7 +89,32 @@ public class Algorithms {
      * Доп. условие: у алгоритма должна быть линейная сложность, O(n).
      */
     public static List<Integer> mergeSortedLists(List<Integer> a, List<Integer> b) {
-        return null;
+        List<Integer> sortedList = new ArrayList<>();
+        int i = 0;
+        int j = 0;
+
+        while (i < a.size() || j < b.size()) {
+            if (i == a.size()) {
+                for (int k = j; k < b.size(); k++) {
+                    sortedList.add(b.get(k));
+                }
+                break;
+            } else if (j == b.size()) {
+                for (int k = i; k < a.size(); k++) {
+                    sortedList.add(a.get(k));
+                }
+                break;
+            } else {
+                if (a.get(i) <= b.get(j)) {
+                    sortedList.add(a.get(i));
+                    i++;
+                } else {
+                    sortedList.add(b.get(j));
+                    j++;
+                }
+            }
+        }
+        return sortedList;
     }
 
     /**
@@ -58,7 +125,17 @@ public class Algorithms {
      *  (списки, массивы, хэш-таблицы, множества и т.п.).
      */
     public static boolean containsEveryElementOnce(int[] array) {
-        return false;
+        boolean isNoDuplicate = true;
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i] == array[j]) {
+                    isNoDuplicate = false;
+                    break;
+                }
+            }
+        }
+        return isNoDuplicate;
     }
 
     /**
@@ -76,7 +153,37 @@ public class Algorithms {
      * [1 2] и [1 1 2] = false, разный набор элементов
      */
     public static boolean isPermutation(int[] a, int[] b) {
-        return false;
+        Map<Integer, Integer> mapElem = new HashMap<>();
+        boolean isPermutation = true;
+
+        for (int i = 0; i < a.length; i++) {
+            if (mapElem.containsKey(a[i])) {
+                int temp = mapElem.get(a[i]);
+                temp++;
+                mapElem.put(a[i], temp);
+            } else {
+                mapElem.put(a[i], 1);
+            }
+        }
+
+        for (int i = 0; i < b.length; i++) {
+            int count = 0;
+            for (int j = 0; j < b.length; j++) {
+                if (b[j] == b[i]) {
+                    count++;
+                }
+            }
+            if (!mapElem.containsKey(b[i])) {
+                isPermutation = false;
+                break;
+            } else {
+                if (mapElem.get(b[i]) != count) {
+                    isPermutation = false;
+                    break;
+                }
+            }
+        }
+        return isPermutation;
     }
 
     /**
@@ -97,6 +204,13 @@ public class Algorithms {
      *   [6 4 2] ]
      */
     public static int[][] rotateRight(int[][] image) {
-        return null;
+        int[][] rotatedImage = new int[image[0].length][image.length];
+
+        for (int i = 0; i < image.length; i++) {
+            for (int j = 0; j < image[i].length; j++) {
+                rotatedImage[j][(image.length - 1) - i] = image[i][j];
+            }
+        }
+        return rotatedImage;
     }
 }

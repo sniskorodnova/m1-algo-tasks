@@ -34,7 +34,6 @@ public class AlgorithmsTest {
         assertTrue(Algorithms.isPalindrome(List.of(3, 2, 1, 2, 3)));
         assertTrue(Algorithms.isPalindrome(List.of(2, 2, 2)));
         assertTrue(Algorithms.isPalindrome(Collections.emptyList()));
-
         assertFalse(Algorithms.isPalindrome(List.of(1, 2, 3)));
         assertFalse(Algorithms.isPalindrome(List.of(2, 2, 3)));
         assertFalse(Algorithms.isPalindrome(List.of(3, 2, 1, 3, 2)));
@@ -45,7 +44,6 @@ public class AlgorithmsTest {
         assertEquals(List.of(1, 2, 3, 4, 5, 6), Algorithms.mergeSortedLists(List.of(1, 3, 5), List.of(2, 4, 6)));
         assertEquals(List.of(1, 1, 2, 3, 3, 5), Algorithms.mergeSortedLists(List.of(1, 2, 3), List.of(1, 3, 5)));
         assertEquals(List.of(1, 4, 7), Algorithms.mergeSortedLists(List.of(7), List.of(1, 4)));
-
         assertEquals(List.of(1, 2, 3), Algorithms.mergeSortedLists(Collections.emptyList(), List.of(1, 2, 3)));
         assertEquals(List.of(1, 2, 3), Algorithms.mergeSortedLists(List.of(1, 2, 3), Collections.emptyList()));
         assertEquals(Collections.emptyList(), Algorithms.mergeSortedLists(Collections.emptyList(), Collections.emptyList()));
@@ -56,7 +54,6 @@ public class AlgorithmsTest {
         assertTrue(Algorithms.containsEveryElementOnce(new int[] { 1, 2, 3 }));
         assertTrue(Algorithms.containsEveryElementOnce(new int[] { 3, 1, 4, 5, 9, 2, 6 }));
         assertTrue(Algorithms.containsEveryElementOnce(new int[] { }));
-
         assertFalse(Algorithms.containsEveryElementOnce(new int[] { 1, 2, 3, 1 }));
         assertFalse(Algorithms.containsEveryElementOnce(new int[] { 1, 1 }));
         assertFalse(Algorithms.containsEveryElementOnce(new int[] { 3, 1, 4, 1, 5, 9, 2, 6 }));
@@ -68,7 +65,6 @@ public class AlgorithmsTest {
         assertTrue(Algorithms.isPermutation(new int[] { 1, 1, 2 }, new int[] { 1, 2, 1 }));
         assertTrue(Algorithms.isPermutation(new int[] { 3, 1, 4, 1, 5, 9, 2, 6 }, new int[] { 1, 1, 9, 2, 3, 4, 5, 6 }));
         assertTrue(Algorithms.isPermutation(new int[] { }, new int[] { }));
-
         assertFalse(Algorithms.isPermutation(new int[] { 1, 2, 3 }, new int[] { 2, 3, 4 }));
         assertFalse(Algorithms.isPermutation(new int[] { 1, 1, 2 }, new int[] { 1, 2 }));
         assertFalse(Algorithms.isPermutation(new int[] { 1, 1, 2 }, new int[] { 1, 2, 2 }));
